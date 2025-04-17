@@ -1,1 +1,1 @@
-deno run --v8-flags=-expose_gc test.ts
+deno run --v8-flags=-expose_gc --allow-env test.ts

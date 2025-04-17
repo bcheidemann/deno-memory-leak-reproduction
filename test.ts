@@ -27,6 +27,13 @@ const initialHeapTotal = Deno.memoryUsage().heapTotal;
 for (let i = 0; i < 5_000; i++) {
   leak();
 }
+
+if (Deno.env.get("DO_SLEEP")) {
+  for (let i = 0; i < 5; i += 1) {
+    console.log('Sleeping...');
+    await new Promise((resolve) => setTimeout(resolve, 1000))
+  }
+}
 // @ts-ignore -- V8 expose GC flag is enabled
 gc();
 
